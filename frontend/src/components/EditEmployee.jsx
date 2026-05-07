@@ -1,7 +1,7 @@
 import {useEffect}from 'react'
 import { useForm } from 'react-hook-form'
 import { useLocation,useNavigate } from 'react-router'
-import axios from 'axios'
+import api from '../api'
 function EditEmployee() {
  
   const {
@@ -26,7 +26,7 @@ function EditEmployee() {
     //modify the form
     const saveModifiedEmp = async (modifiedEmp) => {
       //make http put req
-      const res=await axios.put(` http://localhost:4000/emp-api/employees/${state._id}`,modifiedEmp);
+      const res=await api.put(`/emp-api/employees/${state._id}`,modifiedEmp);
       if(res.status===200){
         //navigate list of users
         navigate("/list");

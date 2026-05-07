@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import axios from 'axios'
+import api from '../api';
 function ListOfEmps() {
   const [emps, setEmps] = useState([]);
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function ListOfEmps() {
   }
   //delete emp
   const deleteEmpById = async (id) => {
-    let res = await axios.delete(`http://localhost:4000/emp-api/employees/${id}`)
+    let res = await api.delete(`/emp-api/employees/${id}`)
     if (res.status === 200) {
       //get latest emps data
       getEmps();
@@ -23,7 +23,7 @@ function ListOfEmps() {
   }
   //get all employees
   async function getEmps() {
-    let res = await axios.get("http://localhost:4000/emp-api/employees");
+    let res = await api.get("/emp-api/employees");
     if (res.status === 200) {
       let resObj = res.data;
       setEmps(resObj.payload);

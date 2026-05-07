@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import api from "../api";
 
 function CreateEmp() {
 
@@ -19,11 +20,7 @@ function CreateEmp() {
     try {
       setLoading(true);
       //make HTTP POST req
-      let res = await fetch("http://localhost:4000/emp-api/employees", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newEmpObj),
-      });
+      let res = await api.post("/emp-api/employees", newEmpObj);
 
       if (res.status === 201) {
         //navigate to employees component programatically
