@@ -3,13 +3,18 @@ import {Outlet} from 'react-router'
 
 function RootLayout() {
   return (
-    <div>
+    <div className="bg-slate-50 min-h-screen">
       <Header />
-      <div className='min-h-screen mx-20 p-20 bg-gray-100'>
-        <Outlet />
-      </div>
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="min-h-[80vh]">
+          <Outlet />
+        </div>
+      </main>
+      <footer className="py-12 border-t border-slate-200 text-center text-slate-400 text-sm">
+        &copy; 2026 EmpPortal. All rights reserved.
+      </footer>
     </div>
   )
 }
 
-export default RootLayout
+export default RootLayout

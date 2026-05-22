@@ -49,46 +49,73 @@ function CreateEmp() {
   }
 
   return (
-    <div>
-      <h1 className="text-5xl text-center text-gray-600">Create New Employee</h1>
-      {/* form */}
-      <form className=" max-w-md mx-auto mt-10" onSubmit={handleSubmit(onFormSubmit)}>
-        <input
-          type="text"
-          placeholder="Enter name "
-          {...register("name")}
-          className="mb-3 border border-2 p-3 w-full rounded-2xl"
-        />
-        <input
-          type="email"
-          placeholder="Enter Email "
-          {...register("email")}
-          className="mb-3 border border-2 p-3 w-full rounded-2xl"
-        />
+    <div className="max-w-2xl mx-auto py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-slate-900 mb-3">Add New Employee</h1>
+        <p className="text-slate-500">Enter the details below to register a new team member.</p>
+      </div>
 
-        <input
-          type="number"
-          placeholder="Enter mobile number"
-          {...register("mobile")}
-          className="mb-3 border border-2 p-3 w-full rounded-2xl"
-        />
-        <input
-          type="text"
-          placeholder="Enter designation"
-          {...register("designation")}
-          className="mb-3 border border-2 p-3 w-full rounded-2xl"
-        />
-        <input
-          type="text"
-          placeholder="Enter name of the company"
-          {...register("companyName")}
-          className="mb-3 border border-2 p-3 w-full rounded-2xl"
-        />
+      <div className="glass-card rounded-3xl p-10 border border-slate-100">
+        <form className="space-y-6" onSubmit={handleSubmit(onFormSubmit)}>
+          <div className="space-y-1">
+            <label className="text-sm font-semibold text-slate-700 ml-1">Full Name</label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              {...register("name", { required: "Name is required" })}
+              className="input-field"
+            />
+          </div>
 
-        <button type="submit" className="text-2xl rounded-2xl bg-gray-600 text-white block mx-auto p-4">
-          Add Emp
-        </button>
-      </form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-slate-700 ml-1">Email Address</label>
+              <input
+                type="email"
+                placeholder="name@mail.com"
+                {...register("email", { required: "Email is required" })}
+                className="input-field"
+              />
+            </div>
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-slate-700 ml-1">Mobile Number</label>
+              <input
+                type="number"
+                placeholder="+91"
+                {...register("mobile")}
+                className="input-field"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-slate-700 ml-1">Designation</label>
+              <input
+                type="text"
+                placeholder="Enter your designation"
+                {...register("designation")}
+                className="input-field"
+              />
+            </div>
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-slate-700 ml-1">Company Name</label>
+              <input
+                type="text"
+                placeholder="Name of the company"
+                {...register("companyName")}
+                className="input-field"
+              />
+            </div>
+          </div>
+
+          <div className="pt-6">
+            <button type="submit" className="w-full btn-primary py-4 text-lg">
+              Create Employee Profile
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
